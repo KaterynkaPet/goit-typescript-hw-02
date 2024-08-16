@@ -1,11 +1,13 @@
 import ReactModal from 'react-modal';
 import css from './ImageModal.module.css'
-import { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
+import { ImageModalProps } from './ImageModalProps';
 
-const ImageModal = ({ image, onClose }) => {
+const ImageModal: FC<ImageModalProps> = ({ image, onClose }) => {
     useEffect(() => {
         ReactModal.setAppElement('#root');
     }, []);
+
     return (
         <ReactModal
             isOpen={!!image}
@@ -13,11 +15,13 @@ const ImageModal = ({ image, onClose }) => {
             contentLabel='Image Modal'
             className={css.modal}
             overlayClassName={css.overlay}
-            appElement={document.getElementById('root')}
         >
             {image && (
                 <div className={css.imageContainer}>
-                    <img src={image.urls.regular} alt={image.description} className={css.image} />
+                    <img
+                        src={image.url}
+                        alt={image.description}
+                        className={css.image} />
                 </div>
             )}
         </ReactModal>

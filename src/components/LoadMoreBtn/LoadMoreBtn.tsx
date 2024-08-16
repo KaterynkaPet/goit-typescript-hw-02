@@ -1,7 +1,9 @@
+import { FC } from 'react';
+import { LoadMoreBtnProps } from './LoadMoreBtnProps';
 import css from './LoadMoreBtn.module.css';
 
-const LoadMoreBtn = ({ onLoadMore, loading }) => {
-    
+const LoadMoreBtn: FC<LoadMoreBtnProps> = ({ onLoadMore, loading }) => {
+
     return (
         <div className={css.load}>
             {loading ? (
@@ -15,5 +17,5 @@ const LoadMoreBtn = ({ onLoadMore, loading }) => {
             )}
         </div>
     );
-}; 
+};
 export default LoadMoreBtn;
