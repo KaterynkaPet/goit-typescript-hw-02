@@ -1,4 +1,4 @@
-import { Image } from "../../App.types"
+import { Image } from "../../Types"
 
 
 export interface ImageModalProps {

@@ -10,7 +10,7 @@ import Loader from '../Loader/Loader'
 import SearchBar from '../SearchBar/SearchBar'
 
 import { getData } from '../../gallery-api'
-import { Image } from '../../App.types'
+import { Image } from '../../Types'
 
 
 function App() {
@@ -30,14 +30,18 @@ function App() {
       const fetchData = async () => {
         setLoading(true);
         try {
-          const { data, total_pages } = await getData(query, page);
-          if (page === 1) {
-            setImages(data);
-
-          } else {
-            setImages(prevImages => [...prevImages, ...data]);
+          const response = await getData(query, page);
+          const data = response.data;
+          const total_pages = response.total_pages;
+          if (Array.isArray(data)) {
+            if (page === 1) {
+              setImages(data);
+            } else {
+              setImages(prevImages => [...prevImages, ...data]);
+            }
+            setShowBtn(!!(total_pages && total_pages !== page));
           }
-          setShowBtn(total_pages && total_pages !== page);
+
         } catch (error) {
           setError((error as Error).message);
         } finally {

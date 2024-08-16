@@ -7,7 +7,7 @@ const ImageCard = forwardRef<HTMLDivElement, ImageCardProps>(({ image, onClick }
     return (
         <div className={css.card} >
             <img
-                src={image.url}
+                src={image.urls.small}
                 alt={image.description}
                 onClick={onClick} />
         </div>

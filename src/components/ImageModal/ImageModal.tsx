@@ -19,7 +19,7 @@ const ImageModal: FC<ImageModalProps> = ({ image, onClose }) => {
             {image && (
                 <div className={css.imageContainer}>
                     <img
-                        src={image.url}
+                        src={image.urls.regular}
                         alt={image.description}
                         className={css.image} />
                 </div>
