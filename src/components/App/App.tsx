@@ -31,7 +31,7 @@ function App() {
         setLoading(true);
         try {
           const response = await getData(query, page);
-          const data = response.data;
+          const data = response.results;
           const total_pages = response.total_pages;
           if (Array.isArray(data)) {
             if (page === 1) {
